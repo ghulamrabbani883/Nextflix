@@ -1,17 +1,36 @@
 import Input from "@/components/Input";
 import axios from "axios";
+import {signIn} from 'next-auth/react';
 import { useCallback, useState } from "react";
+import { useRouter } from "next/router";
 
 const Auth = () => {
+  const router = useRouter();
+
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
 
-  const [variant, setVariant] = useState('');
+  const [variant, setVariant] = useState('login');
 
   const toggleVariant = useCallback(() => {
     setVariant((currentVariant) => currentVariant === 'login' ? 'register' : 'login');
   }, []);
+
+  const login = useCallback(async () => {
+    try {
+      await signIn('credentials', {
+        email,
+        password,
+        redirect: false,
+        callbackUrl: '/'
+      });
+
+      router.push('/profiles');
+    } catch (error) {
+      console.log(error);
+    }
+  }, [email, password, router]);
 
   const register = useCallback(async () => {
     try {
@@ -20,10 +39,12 @@ const Auth = () => {
         name,
         password
       });
+
+      login();
     } catch (error) {
-      // Handle error
+        console.log(error);
     }
-  }, [email, name, password]);
+  }, [email, name, password, login]);
 
   return (
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
@@ -43,7 +64,7 @@ const Auth = () => {
                   type="text"
                   label="Username"
                   value={name}
-                  onChange={(e: any) => setName(e.target.value)}
+                  onChange={(e: any) => setName(e.target.value)} 
                 />
               )}
               <Input
@@ -51,17 +72,17 @@ const Auth = () => {
                 type="email"
                 label="Email address or phone number"
                 value={email}
-                onChange={(e: any) => setEmail(e.target.value)}
+                onChange={(e: any) => setEmail(e.target.value)} 
               />
               <Input
-                type="password"
-                id="password"
-                label="Password"
+                type="password" 
+                id="password" 
+                label="Password" 
                 value={password}
-                onChange={(e: any) => setPassword(e.target.value)}
+                onChange={(e: any) => setPassword(e.target.value)} 
               />
             </div>
-            <button onClick={variant === 'login' ? 'login' : 'register'} className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition">
+            <button onClick={variant === 'login' ? login : register} className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition">
               {variant === 'login' ? 'Login' : 'Sign up'}
             </button>
             <p className="text-neutral-500 mt-12">
