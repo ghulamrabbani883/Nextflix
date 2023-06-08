@@ -3,11 +3,14 @@ module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsxdd}" ,
+    "./components/**/*.{js,ts,jsx,tsxdd}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        test: "#404040",
+      },
+    },
   },
   plugins: [],
-}
-
+};
