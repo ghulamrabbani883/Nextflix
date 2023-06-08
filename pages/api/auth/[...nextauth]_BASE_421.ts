@@ -1,14 +1,8 @@
-<<<<<<< HEAD
-import NextAuth from 'next-auth';
-import Credentials from 'next-auth/providers/credentials';
+import { NextAuth } from 'next-auth';
+import { Credentials } from 'next-auth/providers';
 import { compare } from 'bcrypt';
-import prismadb from '@/libs/prismadb';
-=======
-import  NextAuth  from 'next-auth';
-import Credentials  from 'next-auth/providers/credentials';
-import  {compare}  from 'bcrypt';
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import prismadb from '@/lib/prismadb';
->>>>>>> d84ef986438e0e3bac716d11cd4a95d04a25d754
 
 export default NextAuth({
   providers: [
@@ -22,7 +16,7 @@ export default NextAuth({
         },
         password: {
           label: 'Password',
-          type: 'password'
+          type: 'password',
         },
       },
       async authorize(credentials) {
@@ -32,8 +26,8 @@ export default NextAuth({
 
         const user = await prismadb.user.findUnique({
           where: {
-            email: credentials.email
-          }
+            email: credentials.email,
+          },
         });
 
         if (!user || !user.hashedPassword) {
@@ -54,15 +48,13 @@ export default NextAuth({
     }),
   ],
   pages: {
-    signIn: '/auth'
+    signIn: '/auth',
   },
   debug: process.env.NODE_ENV === 'development',
+  adapter: PrismaAdapter(prismadb),
   session: { strategy: 'jwt' },
   jwt: {
     secret: process.env.NEXTAUTH_JWT_SECRET,
   },
-  secret: process.env.NEXTAUTH_SECRET
+  secret: process.env.NEXTAUTH_SECRET,
 });
-
-
-
