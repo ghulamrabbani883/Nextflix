@@ -1,4 +1,5 @@
 import React from 'react';
+
 interface InputProps {
   id: string;
   onChange: any;
@@ -23,7 +24,7 @@ const Input: React.FC<InputProps> = ({ id, onChange, value, label, type }) => {
         pb-1
         w-full
         text-md
-      text-white
+      text-black
       bg-neutral-700
         appearance-none
         focus:outline-none
@@ -57,4 +58,3 @@ const Input: React.FC<InputProps> = ({ id, onChange, value, label, type }) => {
 }
 
 export default Input;
-
