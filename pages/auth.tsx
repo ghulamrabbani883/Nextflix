@@ -1,10 +1,11 @@
-import { useState, useCallback } from "react";
-import { useRouter } from "next/router";
-import { signIn } from "next-auth/react";
-import axios from "axios";
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
-import Input from "@/components/Input";
+import axios from 'axios';
+import { useCallback, useState } from 'react';
+import { NextPageContext } from 'next';
+import { getSession, signIn } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import { FcGoogle } from 'react-icons/fc';
+import { FaGithub } from 'react-icons/fa';
+import Input from '@/components/Input';
 
 const Auth = () => {
   const router = useRouter();
@@ -50,9 +51,9 @@ const Auth = () => {
 
   return (
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
-      <div className="w-full h-full bg-black lg:bg-opacity-50">
+      <div className="bg-black w-full h-full lg:bg-opacity-50">
         <nav className="px-12 py-5">
-          <img src="/images/logo.png" alt="logo" className="h-12" />
+          <img src="/images/logo.png" className="h-12" alt="Logo" />
         </nav>
         <div className="flex justify-center">
           <div className="bg-black bg-opacity-70 px-16 py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full">
