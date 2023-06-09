@@ -1,0 +1,24 @@
+[33mcommit 4996f6d91b35c9a607042fb947de9f27975d740a[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: adityagoyal200 <goyaladitya3815@gmail.com>
+Date:   Wed Jun 7 03:34:29 2023 +0530
+
+    connectedDB
+
+[33mcommit 7826233a60b8483710bb2ecfb9afb06f58c1a3ab[m
+Merge: f8dd5a7 b04230d
+Author: adityagoyal200 <goyaladitya3815@gmail.com>
+Date:   Wed Jun 7 02:07:36 2023 +0530
+
+    Merge conflicting changes between master and main
+
+[33mcommit b04230d17e92096bdddbb4de81f14531357604cb[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mnew-branch-name[m[33m, [m[1;32mmaster[m[33m)[m
+Author: adityagoyal200 <goyaladitya3815@gmail.com>
+Date:   Wed Jun 7 01:56:35 2023 +0530
+
+    intial
+
+[33mcommit f8dd5a75dcd9a844ffbd072dd01be2f0bbe71d7e[m
+Author: Aditya goyal <59175929+adityagoyal200@users.noreply.github.com>
+Date:   Wed Jun 7 01:52:11 2023 +0530
+
+    Initial commit
